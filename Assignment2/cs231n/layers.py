@@ -410,7 +410,7 @@ def conv_forward_naive(x, w, b, conv_param):
   x_pad = np.zeros((N,C,H+2*pad,W+2*pad))
   for n in range(N):
     for c in range(C):
-      x_pad[n,c] = np.pad(x[n,c],(1,1),'constant', constant_values=(0,0))
+      x_pad[n,c] = np.pad(x[n,c],(pad,pad),'constant', constant_values=(0,0))
 
   for n in range(N):
       for i in range(H_out):
@@ -455,7 +455,7 @@ def conv_backward_naive(dout, cache):
   x_pad = np.zeros((N,C,H+2,W+2))
   for n in range(N):
     for c in range(C):
-      x_pad[n,c] = np.pad(x[n,c],(1,1),'constant', constant_values=(0,0))
+      x_pad[n,c] = np.pad(x[n,c],(pad,pad),'constant', constant_values=(0,0))
 
   db = np.zeros((F))
   for n in range(N):
